@@ -21,7 +21,7 @@ from src.api.hotels import router as router_hotels
 from src.api.images import router as router_images
 from src.api.rooms import router as router_rooms
 from src.database import *  # noqa
-from src.exceptions import validation_exception_handler
+from src.exceptions import validation_exception_handler, validation_exception_handler_pydantic
 from src.init import redis_manager
 
 
@@ -37,9 +37,9 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 
 
-app.add_exception_handler(RequestValidationError, validation_exception_handler)
+app.add_exception_handler(RequestValidationError, validation_exception_handler) # type: ignore
 
-app.add_exception_handler(ValidationError, validation_exception_handler)
+app.add_exception_handler(ValidationError, validation_exception_handler_pydantic) # type: ignore
 
 
 app.include_router(router_auth)

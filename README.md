@@ -32,3 +32,9 @@ docker run --name booking_ngnix \
     -d -p 80:80 nginx 
 
 docker build -t booking_image .
+
+
+SELECT department
+FROM Employees
+WHERE Count(id) > 3
+GROUP BY department

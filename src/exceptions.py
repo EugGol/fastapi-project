@@ -120,7 +120,7 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
     )
 
 
-async def validation_exception_handler(
+async def validation_exception_handler_pydantic(
     request: Request, exc: ValidationError | RequestValidationError
 ):  # noqa F811
     formatted_errors = []
